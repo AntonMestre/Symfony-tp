@@ -11,22 +11,23 @@ class ProStageController extends AbstractController
 
     public function index(): Response
     {
-        return $this->render('pro_stage/index.html.twig', [
-            'controller_name' => 'ProStageController',
-        ]);
+        return $this->render('pro_stage/index.html.twig');
     }
 
-    public function entreprises(): Response
+    public function entreprise(): Response
     {
-        return $this->render('pro_stage/index.html.twig', [
-            'controller_name' => 'Cette page affichera la liste des entreprises proposant un stage',
-        ]);
+        return $this->render('pro_stage/entreprise.html.twig');
     }
 
-    public function formations($id): Response
+    public function formation(): Response
     {
-        return $this->render('pro_stage/index.html.twig', [
-            'controller_name' => 'Cette page affichera le descriptif du stage ayant pour identifiant '.$id,
+        return $this->render('pro_stage/formation.html.twig');
+    }
+
+    public function stage($id): Response
+    {
+        return $this->render('pro_stage/stage.html.twig', [
+            'id' => $id,
         ]);
     }
 

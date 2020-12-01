@@ -2,10 +2,19 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <h1>ProStage</h1>
+        <p> ProStage vous permet de voir les offres de stages disponible dans le Pays Basques.</p>
+        <ul>
+          <li><a href="{{ path('index') }}">Accueil</a></li>
+          <li><a href="{{ path('entreprise') }}">Trier par entreprise</a></li>
+          <li><a href="{{ path('formation') }}">Trier par formation</a></li>
+
+        </ul>
+        <br/>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
