@@ -1,12 +1,16 @@
+# Route de la page d'Accueil
 index:
     path: /
     controller: App\Controller\ProStageController::index
+# Route de la page qui affiche les stages selon l'entreprise
 entreprise:
     path: /entreprise
     controller: App\Controller\ProStageController::entreprise
+# Route de la page qui affiche les stages selon la formation
 formation:
     path: /formation
     controller: App\Controller\ProStageController::formation
+#Route de la page permettant de voir un stage en détail
 stage:
     path: /stage/{id}
     controller: App\Controller\ProStageController::stage

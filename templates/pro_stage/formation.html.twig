@@ -1,5 +1,10 @@
+{# On remplit la template base.html #}
 {% extends 'base.html.twig' %}
+
+{# On remplit le titre de la template #}
 {% block title %}formation{% endblock %}
+
+{# On remplit le corps de la template #}
 {% block body %}
 
 <div class="container">
@@ -22,7 +27,7 @@
     <td>Dut informatique, license 3 informatique</td>
     <td>contact@safran.fr</td>
     <td>15 rue des basques</td>
-    <td><a href="">detail</a></td>
+    <td><a href="{{ path('stage', {'id': 5}) }}">detail</a></td>
   </tr>
   <tr>
     <th scope="row">Developpeur Web</th>
@@ -30,7 +35,7 @@
     <td>DUT informatique</td>
     <td>contact@solidpepper.fr</td>
     <td>16 rue des basques</td>
-    <td><a href="">detail</a></td>
+    <td><a href="{{ path('stage', {'id': 5}) }}">detail</a></td>
   </tr>
 </tbody>
 </table>
