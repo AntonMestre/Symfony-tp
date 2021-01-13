@@ -2,22 +2,22 @@
 {% extends 'base.html.twig' %}
 
 {# On remplit le titre de la template #}
-{% block title %}Stage {{ id }}{% endblock %}
+{% block title %}Stage{% endblock %}
 
 {# On remplit le corps de la template #}
 {% block body %}
 
   <!-- Description du stage -->
   <div class="container">
-  <h1>Developpeur web</h1>
+  <h1>{{ stage.titre }}</h1>
   <ul>
-    <li>Entreprise : Safran</li>
-    <li>Formation(s) : Dut informatique</li>
-    <li>Email : contact@safran.fr</li>
-    <li>Adresse : 15 rue des basques</li>
+    <li>Entreprise : {{ stage.entreprise.nom }}</li>
+    <li>Formation(s) : {% for formation in stage.formations %} {{ formation.titre }} | {% endfor %}</li>
+    <li>Email : {{ stage.email }}</li>
+    <li>Adresse : {{ stage.entreprise.adresse }}</li>
   </ul>
-  <h3> Tâches à réaliser </h3>
-  <p> jdiodjqdzoqjzdoihcqiucnjchiusgfyuzkdpqojdhufcshkdcjqosxugytfrdazqzdzq</p>
+  <h3> {{ stage.activite }} </h3>
+  <p> </p>
   </div>
 
 {% endblock %}

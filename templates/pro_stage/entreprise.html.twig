@@ -21,22 +21,18 @@
   </tr>
 </thead>
 <tbody>
+  {% for entreprise in entreprises %}
+    {% for stage in entreprise.stages %}
   <tr>
-    <th scope="row">Developpeur Mobile</th>
-    <td>Safran</td>
-    <td>Dut informatique, license 3 informatique</td>
-    <td>contact@safran.fr</td>
-    <td>15 rue des basques</td>
+    <th scope="row">{{ stage.titre }}</th>
+    <td>{{ entreprise.nom }}</td>
+    <td>{% for formation in stage.formations %} {{ formation.titre }} | {% endfor %}</td>
+    <td>{{ stage.email }}</td>
+    <td>{{ stage.entreprise.adresse }}</td>
     <td><a href="{{ path('stage', {'id': 5}) }}">detail</a></td>
   </tr>
-  <tr>
-    <th scope="row">Developpeur Web</th>
-    <td>SolidPepper</td>
-    <td>DUT informatique</td>
-    <td>contact@solidpepper.fr</td>
-    <td>16 rue des basques</td>
-    <td><a href="{{ path('stage', {'id': 5}) }}">detail</a></td>
-  </tr>
+    {% endfor %}
+  {% endfor %}
 </tbody>
 </table>
 </div>
