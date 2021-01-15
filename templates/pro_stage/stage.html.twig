@@ -9,11 +9,11 @@
 
   <!-- Description du stage -->
   <div class="container">
-  <h1>Stage</h1>
+  <h2 style="padding-bottom:25px;">Stage</h2>
   <ul>
     <li>Titre : {{ stage.titre }}</li>
-    <li>Entreprise : {{ stage.entreprise.nom }}</li>
-    <li>Formation(s) : {% for formation in stage.formations %} {{ formation.titre }} | {% endfor %}</li>
+    <li>Entreprise : <a href="{{ path('stageEntreprise', {'id': stage.entreprise.id}) }}" >{{ stage.entreprise.nom }}<a></li>
+    <li>Formation(s) : {% for formation in stage.formations %}<a href="{{ path('stageFormation', {'id': formation.id}) }}" >{{ formation.titre }}</a> | {% endfor %}</li>
     <li>Email : {{ stage.email }}</li>
     <li>Adresse : {{ stage.entreprise.adresse }}</li>
     <li>Activité : {{ stage.activite }}</li>

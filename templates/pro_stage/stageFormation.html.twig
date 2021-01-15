@@ -2,17 +2,17 @@
 {% extends 'base.html.twig' %}
 
 {# On remplit le titre de la template #}
-{% block title %}Stage{% endblock %}
+{% block title %}Stage | {{ formation.titre }}{% endblock %}
 
 {# On remplit le corps de la template #}
 {% block body %}
 
   <!-- Contenue de page -->
   <div class="container">
-  <h1>Stages disponible dans la formation <span class="badge bg-secondary">{{ formation.titre }}</span></h1>
+  <h2 style="padding-bottom:25px;">Stages disponible dans la formation <span class="badge bg-secondary">{{ formation.titre }}</span></h2>
 
     <!-- Affichage du tableau regroupant les stages -->
-    <table class="table">
+    <table class="table table-striped table-bordered">
     <thead>
       <tr>
         <th scope="col">Titre</th>
@@ -27,11 +27,11 @@
       {% for stage in formation.stages %}
       <tr>
         <th scope="row">{{ stage.titre }}</th>
-        <td>{{ stage.entreprise.nom }}</td>
-        <td>{{ formation.titre }}</td>
+        <td><a href="{{ path('stageEntreprise', {'id': stage.entreprise.id}) }}" >{{ stage.entreprise.nom }}<a></td>
+        <td>{% for formation in stage.formations %} <a href="{{ path('stageFormation', {'id': formation.id}) }}" >{{ formation.titre }}</a> | {% endfor %}</td>
         <td>{{ stage.email }}</td>
         <td>{{ stage.entreprise.adresse }}</td>
-        <td><a href="{{ path('stage', {'id': stage.id}) }}">detail</a></td>
+        <td><a  class="btn" style="background-color:#0068FF;color:white;" href="{{ path('stage', {'id': stage.id}) }}">détails</a></td>
       </tr>
       {% endfor %}
     </tbody>
