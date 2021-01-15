@@ -1,0 +1,42 @@
+{# On remplit la template base.html #}
+{% extends 'base.html.twig' %}
+
+{# On remplit le titre de la template #}
+{% block title %}Stage{% endblock %}
+
+{# On remplit le corps de la template #}
+{% block body %}
+
+  <!-- Contenue de page -->
+  <div class="container">
+  <h1>Stages disponible dans la formation <span class="badge bg-secondary">{{ formation.titre }}</span></h1>
+
+    <!-- Affichage du tableau regroupant les stages -->
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Titre</th>
+        <th scope="col">Nom de l'entreprise</th>
+        <th scope="col">Formation</th>
+        <th scope="col">Email</th>
+        <th scope="col">Adresse de l'entreprise</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for stage in formation.stages %}
+      <tr>
+        <th scope="row">{{ stage.titre }}</th>
+        <td>{{ stage.entreprise.nom }}</td>
+        <td>{{ formation.titre }}</td>
+        <td>{{ stage.email }}</td>
+        <td>{{ stage.entreprise.adresse }}</td>
+        <td><a href="{{ path('stage', {'id': stage.id}) }}">detail</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+
+  </div>
+
+{% endblock %}

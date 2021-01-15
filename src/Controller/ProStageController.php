@@ -35,9 +35,6 @@ class ProStageController extends AbstractController
       // Récupérer le repository de l'entité Stage
       $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
 
-      //$querye = $repositoryEntreprise->createQueryBuilder('en');
-      //$entreprises = $querye->select('en.nom')->groupBy('en.nom')->getQuery()->getResult();
-
       // Récupérer les stages enregistrées en BD
       $entreprises = $repositoryEntreprise->findAll();
 
@@ -70,9 +67,43 @@ class ProStageController extends AbstractController
        // Récupérer le stage demandé
        $stage = $repositoryStage->find($id);
 
-       // Envoyer le stage récupérées à la vue chargée de les afficher
+       // Envoyer le stage récupérés à la vue chargée de les afficher
         return $this->render('pro_stage/stage.html.twig', [
             'stage' => $stage,
+        ]);
+    }
+
+    /*
+    * Controlleur de la page permettant de voir les stages d'une entreprise
+    */
+    public function stageEntreprise($id): Response
+    {
+        // Récupérer le repository de l'entité Entreprise
+       $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+
+       // Récupérer l'entreprise demandée
+       $entreprise = $repositoryEntreprise->find($id);
+
+       // Envoyer l'entreprise récupérées à la vue chargée de les afficher
+        return $this->render('pro_stage/stageEntreprise.html.twig', [
+            'entreprise' => $entreprise,
+        ]);
+    }
+
+    /*
+    * Controlleur de la page permettant de voir les stages d'une entreprise
+    */
+    public function stageFormation($id): Response
+    {
+        // Récupérer le repository de l'entité Formation
+       $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
+
+       // Récupérer la formation demandée
+       $formation = $repositoryFormation->find($id);
+
+       // Envoyer la formation récupérées à la vue chargée de les afficher
+        return $this->render('pro_stage/stageFormation.html.twig', [
+            'formation' => $formation,
         ]);
     }
 

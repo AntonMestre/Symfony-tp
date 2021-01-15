@@ -8,16 +8,16 @@
 {% block body %}
 
 <div class="container">
-<h1> Non classé </h1>
-<table class="table">
-<thead>
+<h2 style="padding-bottom:25px;"> Tous les stages disponible sur la plateforme</h2>
+<table class="table table-striped table-bordered" >
+<thead >
   <tr>
     <th scope="col">Titre</th>
     <th scope="col">Nom de l'entreprise</th>
     <th scope="col">Formation</th>
     <th scope="col">Email</th>
     <th scope="col">Adresse de l'entreprise</th>
-    <th scope="col">Details</th>
+    <th scope="col"></th>
   </tr>
 </thead>
 <tbody>
@@ -25,10 +25,10 @@
   <tr>
     <th scope="row">{{ stage.titre }}</th>
     <td>{{ stage.entreprise.nom }}</td>
-    <td>{% for formation in stage.formations %} {{ formation.titre }} | {% endfor %}</td>
+    <td>{% for formation in stage.formations %} <a href="{{ path('stageFormation', {'id': formation.id}) }}" >{{ formation.titre }}</a> | {% endfor %}</td>
     <td>{{ stage.email }}</td>
     <td>{{ stage.entreprise.adresse }}</td>
-    <td><a href="{{ path('stage', {'id': stage.id}) }}">detail</a></td>
+    <td><a  class="btn" style="background-color:#0068FF;color:white;" href="{{ path('stage', {'id': stage.id}) }}">détails</a></td>
   </tr>
   {% endfor %}
 </tbody>

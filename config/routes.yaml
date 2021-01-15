@@ -14,3 +14,11 @@ formation:
 stage:
     path: /stage/{id}
     controller: App\Controller\ProStageController::stage
+#Route de la page permettant de voir les stages proposés par une entreprise
+stageEntreprise:
+    path: /entreprise/{id}
+    controller: App\Controller\ProStageController::stageEntreprise
+#Route de la page permettant de voir les stages proposés dans une formation
+stageFormation:
+    path: /formation/{id}
+    controller: App\Controller\ProStageController::stageFormation
