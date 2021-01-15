@@ -32,10 +32,10 @@ class ProStageController extends AbstractController
     */
     public function entreprise(): Response
     {
-      // Récupérer le repository de l'entité Stage
+      // Récupérer le repository de l'entité Entreprise
       $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
 
-      // Récupérer les stages enregistrées en BD
+      // Récupérer les entreprises enregistrées en BD
       $entreprises = $repositoryEntreprise->findAll();
 
       return $this->render('pro_stage/entreprise.html.twig',['entreprises'=>$entreprises]);
@@ -47,10 +47,10 @@ class ProStageController extends AbstractController
     public function formation(): Response
     {
 
-      // Récupérer le repository de l'entité Stage
+      // Récupérer le repository de l'entité Formation
      $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
 
-     // Récupérer les stages enregistrées en BD
+     // Récupérer les formations enregistrées en BD
      $formations = $repositoryFormation->findAll();
 
      return $this->render('pro_stage/formation.html.twig',['formations'=>$formations]);
