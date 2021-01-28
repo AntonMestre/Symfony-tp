@@ -19,22 +19,18 @@ class StageRepository extends ServiceEntityRepository
         parent::__construct($registry, Stage::class);
     }
 
-    // /**
-    //  * @return Stage[] Returns an array of Stage objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    /**
+     * @return Stage[] Returns an array of Stage objects
+     */
+
+   public function findAllOptimized()
+   {
+       return $this->createQueryBuilder('s')
+           ->join('s.entreprise','e')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
     /*
     public function findOneBySomeField($value): ?Stage

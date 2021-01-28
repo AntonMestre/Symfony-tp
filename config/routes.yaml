@@ -16,9 +16,9 @@ stage:
     controller: App\Controller\ProStageController::stage
 #Route de la page permettant de voir les stages proposés par une entreprise
 stageEntreprise:
-    path: /entreprise/{id}
+    path: /entreprise/{nomEntreprise}
     controller: App\Controller\ProStageController::stageEntreprise
 #Route de la page permettant de voir les stages proposés dans une formation
 stageFormation:
-    path: /formation/{id}
+    path: /formation/{nomFormation}
     controller: App\Controller\ProStageController::stageFormation

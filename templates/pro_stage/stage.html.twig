@@ -12,8 +12,8 @@
   <h2 style="padding-bottom:25px;">Stage</h2>
   <ul>
     <li>Titre : {{ stage.titre }}</li>
-    <li>Entreprise : <a href="{{ path('stageEntreprise', {'id': stage.entreprise.id}) }}" >{{ stage.entreprise.nom }}<a></li>
-    <li>Formation(s) : {% for formation in stage.formations %}<a href="{{ path('stageFormation', {'id': formation.id}) }}" >{{ formation.titre }}</a> | {% endfor %}</li>
+    <li>Entreprise : <a href="{{ path('stageEntreprise', {'nomEntreprise': stage.entreprise.nom}) }}" >{{ stage.entreprise.nom }}<a></li>
+    <li>Formation(s) : {% for formation in stage.formations %}<a href="{{ path('stageFormation', {'nomFormation': formation.titre}) }}" >{{ formation.titre }}</a> | {% endfor %}</li>
     <li>Email : {{ stage.email }}</li>
     <li>Adresse : {{ stage.entreprise.adresse }}</li>
     <li>Activité : {{ stage.activite }}</li>
