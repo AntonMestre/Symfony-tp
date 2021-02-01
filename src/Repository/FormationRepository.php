@@ -37,22 +37,5 @@ class FormationRepository extends ServiceEntityRepository
     */
 
 
-    public function findOneByNom($nomFormation): ?Formation
-    {
-      // Récupérer le gestionnaire d'entité
-      $entityManager = $this->getEntityManager();
-
-      // Construction de la requêtemp
-       $requete = $entityManager->createQuery(
-         'SELECT f
-          FROM App\Entity\Formation f
-          WHERE f.titre = :nomFormation'
-       );
-
-       $requete ->setParameter('nomFormation', $nomFormation);
-
-      // Exécuter la requête et retourner les résultats
-      return $requete->getOneOrNullResult();
-    }
 
 }

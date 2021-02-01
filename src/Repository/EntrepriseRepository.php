@@ -36,13 +36,5 @@ class EntrepriseRepository extends ServiceEntityRepository
     }
     */
 
-    public function findOneByNom($nom): ?Entreprise
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.nom = :nomEntreprise')
-            ->setParameter('nomEntreprise', $nom)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
+  
 }

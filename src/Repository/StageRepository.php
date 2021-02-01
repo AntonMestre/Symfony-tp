@@ -23,14 +23,55 @@ class StageRepository extends ServiceEntityRepository
      * @return Stage[] Returns an array of Stage objects
      */
 
-   public function findAllOptimized()
-   {
-       return $this->createQueryBuilder('s')
-           ->join('s.entreprise','e')
-           ->getQuery()
-           ->getResult()
-       ;
-   }
+     public function findAllOptimized()
+     {
+       $gestionnaireEntite = $this->getEntityManager();
+
+       $requete = $gestionnaireEntite->createQuery('SELECT s,e,f FROM App\Entity\Stage s JOIN s.entreprise e JOIN s.formations f');
+
+       return $requete->execute();
+     }
+
+     /**
+      * @return Stage[] Returns an array of Stage objects
+      */
+
+     public function findOneByNomEntreprise($nom)
+     {
+         return $this->createQueryBuilder('s')
+             ->join('s.entreprise','e')
+             ->andWhere('e.nom = :nomEntreprise')
+             ->setParameter('nomEntreprise', $nom)
+             ->getQuery()
+             ->getResult()
+         ;
+     }
+
+     /**
+      * @return Stage[] Returns an array of Stage objects
+      */
+
+     public function findOneByNomFormation($nomFormation)
+     {
+       // Récupérer le gestionnaire d'entité
+       $entityManager = $this->getEntityManager();
+
+       // Construction de la requêtemp
+        $requete = $entityManager->createQuery(
+          'SELECT s
+           FROM App\Entity\Stage s JOIN s.formations f
+           WHERE f.titre = :nomFormation'
+        );
+
+        $requete ->setParameter('nomFormation', $nomFormation);
+
+       // Exécuter la requête et retourner les résultats
+       return $requete->execute();
+     }
+
+
+
+
 
     /*
     public function findOneBySomeField($value): ?Stage

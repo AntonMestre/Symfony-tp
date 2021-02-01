@@ -63,29 +63,31 @@ class ProStageController extends AbstractController
     /*
     * Controller de la page permettant de voir les stages d'une entreprise
     */
-    public function stageEntreprise(EntrepriseRepository $repositoryEntreprise,$nomEntreprise): Response
+    public function stageEntreprise(StageRepository $repositoryStage,$nomEntreprise): Response
     {
        // Récupérer l'entreprise demandée
-       $entreprise = $repositoryEntreprise->findOneByNom($nomEntreprise);
+       $stages = $repositoryStage->findOneByNomEntreprise($nomEntreprise);
 
        // Envoyer l'entreprise récupérées à la vue chargée de les afficher
         return $this->render('pro_stage/stageEntreprise.html.twig', [
-            'entreprise' => $entreprise,
+            'stages' => $stages,
+            'nomEntreprise' => $nomEntreprise,
         ]);
     }
 
     /*
     * Controller de la page permettant de voir les stages d'une entreprise
     */
-    public function stageFormation(FormationRepository $repositoryFormation,$nomFormation): Response
+    public function stageFormation(StageRepository $repositoryStage,$nomFormation): Response
     {
 
        // Récupérer la formation demandée
-       $formation = $repositoryFormation->findOneByNom($nomFormation);
+       $stages = $repositoryStage->findOneByNomFormation($nomFormation);
 
        // Envoyer la formation récupérées à la vue chargée de les afficher
         return $this->render('pro_stage/stageFormation.html.twig', [
-            'formation' => $formation,
+            'stages' => $stages,
+            'nomFormation' => $nomFormation,
         ]);
     }
 
