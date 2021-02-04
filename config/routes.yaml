@@ -22,3 +22,7 @@ stageEntreprise:
 stageFormation:
     path: /formation/{nomFormation}
     controller: App\Controller\ProStageController::stageFormation
+#Route permettant l'ajour d'une entreprise en base de données
+ajoutEntreprise:
+    path: /entrepriseAjouter
+    controller: App\Controller\ProStageController::ajouterEntreprise
