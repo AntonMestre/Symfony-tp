@@ -26,3 +26,7 @@ stageFormation:
 ajoutEntreprise:
     path: /entrepriseAjouter
     controller: App\Controller\ProStageController::ajouterEntreprise
+#Route permettant la modification d'une entreprise en base de données
+modifierEntreprise:
+    path: /entrepriseModifier/{id}
+    controller: App\Controller\ProStageController::modifierEntreprise

@@ -9,7 +9,13 @@
 
 <!-- Contenue de page -->
 <div class="container">
-<h2 style="padding-bottom:25px;"> Ajouter une entreprise sur la plateforme </h2>
+<h2 style="padding-bottom:25px;">
+{% if action == "Ajouter" %}
+Ajout d'une entreprise
+{% else %}
+Modifier une entreprise
+{% endif %}
+</h2>
 
 {{ form_start(vueFormulaire) }}
 

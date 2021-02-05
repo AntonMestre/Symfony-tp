@@ -27,7 +27,7 @@
       {% for stage in stages %}
       <tr>
         <th scope="row">{{ stage.titre }}</th>
-        <td><a href="{{ path('stageEntreprise', {'nomEntreprise': stage.entreprise.nom}) }}" >{{ nomEntreprise }}<a></td>
+        <td><a href="{{ path('stageEntreprise', {'nomEntreprise': stage.entreprise.nom}) }}" >{{ nomEntreprise }}</a></td>
         <td>{% for formation in stage.formations %} <a href="{{ path('stageFormation', {'nomFormation': formation.titre }) }}" >{{ formation.titre }}</a> | {% endfor %}</td>
         <td>{{ stage.email }}</td>
         <td>{{ stage.entreprise.adresse }}</td>
