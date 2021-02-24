@@ -108,6 +108,7 @@ class ProStageController extends AbstractController
        $formulaireEntreprise = $this->createFormBuilder($entreprise)
        ->add('nom',TextType::class)
        ->add('adresse',TextType::class)
+       ->add('activitePrincipale',TextType::class)
        ->add('site',UrlType::class)
        ->getForm();
 
@@ -116,7 +117,7 @@ class ProStageController extends AbstractController
       récupère les valeurs de ces variables et les affecte à l'objet $entreprise*/
       $formulaireEntreprise->handleRequest($request);
 
-       if ($formulaireEntreprise->isSubmitted() )
+       if ($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
        {
           // Enregistrer la ressource en base de donnéelse
           $manager->getManager()->persist($entreprise);
@@ -140,6 +141,7 @@ class ProStageController extends AbstractController
        $formulaireEntreprise = $this->createFormBuilder($entreprise)
        ->add('nom',TextType::class)
        ->add('adresse',TextType::class)
+       ->add('activitePrincipale',TextType::class)
        ->add('site',UrlType::class)
        ->getForm();
 

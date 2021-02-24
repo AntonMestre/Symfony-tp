@@ -6,6 +6,7 @@ use App\Repository\EntrepriseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EntrepriseRepository::class)
@@ -21,16 +22,25 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 4,
+     *      minMessage = "Le titre doit faire au minimum {{ limit }} caractères",
+     * )
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=80)
+     * @Assert\Regex( pattern="#rue|avenue|boulevard|impasse|allée|place|route|voie#",message="type de voie invalide")
+     * @Assert\Regex( pattern="# [0-9]{5} #",message="code postal invalide invalide")
+     * @Assert\Regex( pattern="#[0-9]{3} #",message="numéro de rue invalide")
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=80)
+     * @Assert\Url
      */
     private $site;
 
@@ -38,6 +48,12 @@ class Entreprise
      * @ORM\OneToMany(targetEntity=Stage::class, mappedBy="entreprise")
      */
     private $stages;
+
+    /**
+     * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank
+     */
+    private $activitePrincipale;
 
     public function __construct()
     {
@@ -111,6 +127,18 @@ class Entreprise
                 $stage->setEntreprise(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getActivitePrincipale(): ?string
+    {
+        return $this->activitePrincipale;
+    }
+
+    public function setActivitePrincipale(string $activitePrincipale): self
+    {
+        $this->activitePrincipale = $activitePrincipale;
 
         return $this;
     }
