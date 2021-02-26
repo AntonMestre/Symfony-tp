@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Form\EntrepriseType;
 
 class ProStageController extends AbstractController
 {
@@ -105,12 +106,7 @@ class ProStageController extends AbstractController
        $entreprise = new Entreprise();
 
        // Création du formulaire permettant de saisir une ressource
-       $formulaireEntreprise = $this->createFormBuilder($entreprise)
-       ->add('nom',TextType::class)
-       ->add('adresse',TextType::class)
-       ->add('activitePrincipale',TextType::class)
-       ->add('site',UrlType::class)
-       ->getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
        /* On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu
       dans cette requête contient des variables titre, descriptif, etc. alors la méthode handleRequest()
@@ -137,13 +133,8 @@ class ProStageController extends AbstractController
     public function modifierEntreprise(Request $request,ManagerRegistry $manager,Entreprise $entreprise): Response
     {
 
-       // Création du formulaire permettant de saisir une ressource
-       $formulaireEntreprise = $this->createFormBuilder($entreprise)
-       ->add('nom',TextType::class)
-       ->add('adresse',TextType::class)
-       ->add('activitePrincipale',TextType::class)
-       ->add('site',UrlType::class)
-       ->getForm();
+       // Création du formulaire permettant de modifier une ressource
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
        /* On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu
       dans cette requête contient des variables titre, descriptif, etc. alors la méthode handleRequest()
