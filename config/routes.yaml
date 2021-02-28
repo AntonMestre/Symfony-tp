@@ -2,11 +2,11 @@
 index:
     path: /
     controller: App\Controller\ProStageController::index
-# Route de la page qui affiche les stages selon l'entreprise
+# Route de la page qui affiche les entreprises proposant un stage
 entreprise:
     path: /entreprise
     controller: App\Controller\ProStageController::entreprise
-# Route de la page qui affiche les stages selon la formation
+# Route de la page qui affiche les formations proposant un stage
 formation:
     path: /formation
     controller: App\Controller\ProStageController::formation
@@ -30,3 +30,7 @@ ajoutEntreprise:
 modifierEntreprise:
     path: /entrepriseModifier/{id}
     controller: App\Controller\ProStageController::modifierEntreprise
+#Route permettant l'ajout d'un stage en base de données
+ajoutStage:
+    path: /stageAjouter
+    controller: App\Controller\ProStageController::stageAjouter

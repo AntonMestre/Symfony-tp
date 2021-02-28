@@ -1,0 +1,45 @@
+{# On remplit la template base.html #}
+{% extends 'base.html.twig' %}
+
+{# On remplit le titre de la template #}
+{% block title %}Accueil{% endblock %}
+
+{# On remplit le corps de la template #}
+{% block body %}
+
+    <!-- Contenue de page -->
+    <div class="container">
+        <h2 style="padding-bottom:25px;">Ajout d'un stage
+        </h2>
+
+        {{ form_start(vueFormulaire) }}
+
+        {{ form_row(vueFormulaire.titre) }}
+
+        {{ form_row(vueFormulaire.activite) }}
+
+        {{ form_row(vueFormulaire.email) }}
+        <h6> Entreprise </h6>
+        {{ form_row(vueFormulaire.entreprise.nom) }}
+
+        {{ form_row(vueFormulaire.entreprise.adresse) }}
+
+        {{ form_row(vueFormulaire.entreprise.site) }}
+
+        {{ form_row(vueFormulaire.entreprise.activitePrincipale) }}
+
+        <h6> Le stage est proposé au formations suivantes : </h6>
+        
+        {{ form_row(vueFormulaire.formations) }}
+
+        <button type="submit" class="btn btn-dark">Enregistrer</button>
+
+
+
+        {{ form_end(vueFormulaire) }}
+
+
+
+    </div>
+
+{% endblock %}
