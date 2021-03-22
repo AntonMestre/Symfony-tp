@@ -32,6 +32,7 @@ security:
     access_control:
         - { path: ^/entrepriseAjouter, roles: ROLE_ADMIN }
         - { path: ^/stageAjouter, roles: ROLE_USER }
+        - { path: ^/formation, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
     encoders:
             Symfony\Component\Security\Core\User\User:
