@@ -1,0 +1,13 @@
+easy_admin:
+    entities:
+        # change the following to the namespaces of your own entities
+        - App\Entity\Stage
+        - App\Entity\Formation
+        - App\Entity\Entreprise
+        - App\Entity\User
+    design:
+        brand_color: '#FF2D00'
+        assets:
+            css:
+                # ...
+                - 'css/admin.css'
